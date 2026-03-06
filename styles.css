@@ -1,0 +1,134 @@
+.route-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 1.2rem 1rem 1rem;
+  overflow-x: auto;
+  background: linear-gradient(
+    to bottom,
+    rgba(226, 193, 132, 0.96),
+    rgba(206, 166, 104, 0.92)
+  );
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(120, 82, 31, 0.25);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  scrollbar-width: thin;
+}
+
+.route-nav::-webkit-scrollbar {
+  height: 8px;
+}
+
+.route-nav::-webkit-scrollbar-thumb {
+  background: rgba(120, 82, 31, 0.35);
+  border-radius: 999px;
+}
+
+.route-nav {
+  position: sticky;
+}
+
+.route-line {
+  position: absolute;
+  left: 2.5rem;
+  right: 2.5rem;
+  top: 2rem;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    rgba(132, 87, 39, 0.55),
+    rgba(101, 66, 28, 0.75)
+  );
+  border-radius: 999px;
+  z-index: 0;
+}
+
+.stop {
+  position: relative;
+  z-index: 1;
+  min-width: 120px;
+  text-decoration: none;
+  color: #4c2f12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.stop:hover {
+  transform: translateY(-2px);
+  color: #2e1b09;
+}
+
+.stop-dot {
+  width: 16px;
+  height: 16px;
+  margin-bottom: 0.55rem;
+  border-radius: 50%;
+  background: #f8ecd1;
+  border: 3px solid #80501f;
+  box-shadow: 0 0 0 4px rgba(248, 236, 209, 0.18);
+}
+
+.stop-label {
+  max-width: 110px;
+  font-size: 0.82rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.bus-marker {
+  position: absolute;
+  top: -1.15rem;
+  font-size: 1rem;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.18));
+  animation: busFloat 2.8s ease-in-out infinite;
+}
+
+.active .stop-dot {
+  background: #ffef9a;
+  border-color: #a2471b;
+  transform: scale(1.12);
+}
+
+.active .stop-label {
+  color: #7f220c;
+}
+
+@keyframes busFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@media (max-width: 900px) {
+  .route-nav {
+    justify-content: flex-start;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .stop {
+    min-width: 100px;
+  }
+
+  .stop-label {
+    font-size: 0.76rem;
+    max-width: 95px;
+  }
+
+  .route-line {
+    left: 1.8rem;
+    right: 1.8rem;
+  }
+  }
