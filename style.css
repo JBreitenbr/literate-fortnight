@@ -1,0 +1,97 @@
+.route-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: repeat(9, minmax(80px, 1fr));
+  gap: 0.4rem;
+  align-items: start;
+  padding: 1rem 0.8rem 0.8rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(226, 193, 132, 0.96),
+    rgba(206, 166, 104, 0.92)
+  );
+  border-bottom: 1px solid rgba(120, 82, 31, 0.25);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.stop {
+  position: relative;
+  text-decoration: none;
+  color: #4c2f12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stop-dot {
+  width: 14px;
+  height: 14px;
+  margin-bottom: 0.45rem;
+  border-radius: 50%;
+  background: #f8ecd1;
+  border: 3px solid #80501f;
+}
+
+.stop-label {
+  font-size: 0.74rem;
+  line-height: 1.15;
+  font-weight: 600;
+  max-width: 90px;
+  word-break: normal;
+  hyphens: auto;
+}
+
+.bus-marker {
+  position: absolute;
+  top: -0.95rem;
+  font-size: 1rem;
+}
+
+.active .stop-dot {
+  background: #ffef9a;
+  border-color: #a2471b;
+}
+
+.active .stop-label {
+  color: #7f220c;
+}
+
+/* Linie hinter den Punkten */
+.route-nav::before {
+  content: "";
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: 1.42rem;
+  height: 4px;
+  background: rgba(101, 66, 28, 0.65);
+  border-radius: 999px;
+  z-index: -1;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .route-nav {
+    grid-template-columns: repeat(5, minmax(70px, 1fr));
+    row-gap: 0.9rem;
+  }
+
+  .route-nav::before {
+    display: none;
+  }
+}
+
+/* Handy */
+@media (max-width: 600px) {
+  .route-nav {
+    grid-template-columns: repeat(3, minmax(70px, 1fr));
+  }
+
+  .stop-label {
+    font-size: 0.7rem;
+    max-width: 80px;
+  }
+}
